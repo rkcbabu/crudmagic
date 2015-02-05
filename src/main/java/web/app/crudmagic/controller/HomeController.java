@@ -5,24 +5,48 @@
  */
 package web.app.crudmagic.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.app.crudmagic.domain.Setting;
 import web.app.crudmagic.service.GenericService;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
+
     @Autowired
-    GenericService<Setting, Long> settingService; 
-    @RequestMapping()
-    public String index() {
-        Setting setting = new Setting();
-        setting.setKeyword("siteName");
-        setting.setContent("Crud Magic");
-        settingService.create(setting);
+    GenericService<Setting, Long> settingService;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String indexGet(Model model) {
+        model.addAttribute("setting", new Setting());
         return "index";
     }
-    
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String indexPost(@ModelAttribute("setting") Setting setting, Model model, BindingResult result, HttpSession session) {
+        if (result.hasErrors()) {
+            model.addAttribute("setting", setting);
+            return "index";
+        }
+        settingService.create(setting);
+        session.setAttribute("flashMessage", "Setting is created.");
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/flashMessage", method = RequestMethod.GET)
+    public String flashMessage(Model model, HttpSession session) {
+        if (session.getAttribute("flashMessage") != null) {
+            model.addAttribute("flashMessage", session.getAttribute("flashMessage"));
+            session.setAttribute("flashMessage", null);
+        }
+        return "includes/flashMessage";
+    }
+
 }

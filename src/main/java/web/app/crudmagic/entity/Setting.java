@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package web.app.crudmagic.domain;
+package web.app.crudmagic.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

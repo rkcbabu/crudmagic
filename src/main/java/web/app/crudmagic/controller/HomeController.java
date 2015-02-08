@@ -14,7 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import web.app.crudmagic.domain.Setting;
+import web.app.crudmagic.entity.Setting;
 import web.app.crudmagic.service.GenericService;
 
 @Controller

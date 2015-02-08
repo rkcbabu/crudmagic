@@ -1,13 +1,11 @@
-package web.app.crudmagic.serviceImp;
+package web.app.crudmagic.service;
 
 import java.io.Serializable;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import web.app.crudmagic.dao.GenericDAO;
-import web.app.crudmagic.service.GenericService;
 
 /**
  *
@@ -16,7 +14,6 @@ import web.app.crudmagic.service.GenericService;
  * @param <Entity>
  * @param <ID>
  */
-@Service
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public abstract class GenericServiceImp<EntityDao extends GenericDAO, Entity, ID extends Serializable> implements GenericService<Entity, ID> {
 

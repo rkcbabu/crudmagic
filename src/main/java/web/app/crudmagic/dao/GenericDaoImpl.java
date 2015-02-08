@@ -1,4 +1,4 @@
-package web.app.crudmagic.daoImp;
+package web.app.crudmagic.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -11,9 +11,17 @@ import org.hibernate.criterion.Criterion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import web.app.crudmagic.dao.GenericDAO;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
-//@Repository
+/**
+ *
+ * @author Ram Chaulagai <ram.chaulagai.np@gmail.com>
+ * @param <Entity>
+ * @param <ID>
+ */
+@Transactional
+@EnableTransactionManagement
 public abstract class GenericDaoImpl<Entity, ID extends Serializable> implements GenericDAO<Entity, ID> {
 
     @Autowired

@@ -32,7 +32,7 @@
 
         <property name="packagesToScan">
             <list>
-                <value>web.app.crudmagic.domain</value>
+                <value>web.app.crudmagic.entity</value>
             </list>
         </property>
         <property name="hibernateProperties">

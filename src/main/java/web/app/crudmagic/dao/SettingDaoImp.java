@@ -3,21 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package web.app.crudmagic.daoImp;
+package web.app.crudmagic.dao;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Transactional;
-import web.app.crudmagic.dao.GenericDAO;
-import web.app.crudmagic.domain.Setting;
+import web.app.crudmagic.entity.Setting;
 
 /**
  *
  * @author Ram Chaulagai <ram.chaulagai.np@gmail.com>
  */
 @Repository
-@Transactional
-@EnableTransactionManagement
 public class SettingDaoImp extends GenericDaoImpl<Setting, Long>
         implements GenericDAO<Setting, Long> {
 

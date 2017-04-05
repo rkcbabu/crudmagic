@@ -27,6 +27,7 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String indexGet(Model model) {
         model.addAttribute("setting", new Setting());
+        model.addAttribute("settings", settingService.getAll());
         return "index";
     }
 

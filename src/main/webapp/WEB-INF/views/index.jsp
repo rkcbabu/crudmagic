@@ -8,7 +8,7 @@
         <title>Starter Home Page </title>
     </head>
     <body>
-        <c:import url="/flashMessage"/>
+        <h1 style="color:red"><c:import url="/flashMessage"/></h1>
         Please Key-Value pair Entry : <br/><br/>
         <form:form commandName="setting" method="post">
             Key: <form:input path="keyword" /><br/><br/>
@@ -21,6 +21,7 @@
 		    <tr>
 		        <td>Key: ${entry.keyword}</td>
 		        <td>Value: ${entry.content}</td>
+		        <td><input type="submit" name="Delete" value="Delete" /></td>
 		    </tr>
 		</c:forEach>
 		</table>
